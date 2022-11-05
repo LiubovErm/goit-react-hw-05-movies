@@ -2,14 +2,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from "react";
 import { SharedLayout } from '../components/SharedLayout/SharedLayout'
 
-const createAsyncComponent = (path) => lazy(() => import(path));
-
-const Home = createAsyncComponent("../pages/Home/Home");
-const Movies = createAsyncComponent("../pages/Movies/Movies");
-const MoviesDetails = createAsyncComponent("../components/MoviesDetails/MoviesDetails");
-const Cast = createAsyncComponent("../components/Cast/Cast");
-const Reviews = createAsyncComponent("../components/Reviews/Reviews");
-
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MoviesDetails = lazy(() => import('../components/MoviesDetails/MoviesDetails'));
+const Cast = lazy(() => import('../components/Cast/Cast'));
+const Reviews = lazy(() =>import('../components/Reviews/Reviews'));
 
 export const App = () => {
   return (
@@ -18,7 +15,7 @@ export const App = () => {
     <Route path="/" element={<SharedLayout />}>
       <Route index element={<Home />} />
       <Route path="movies" element={<Movies />} />
-      <Route path="movies/:id" element={<MoviesDetails />}>
+      <Route path="movies/:movieId" element={<MoviesDetails />}>
         <Route path="cast" element={<Cast />} />
         <Route path="reviews" element={<Reviews />} />
       </Route>
