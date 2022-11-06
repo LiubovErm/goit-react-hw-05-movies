@@ -7,9 +7,11 @@ axios.defaults.params = {
   api_key: KEY,
 };
 
-export async function getPopularMovies() {
-  const { data } = await axios.get('/trending/movie/week');
-  return data.results;
+export async function getPopularMovies(page) {
+  const response = await axios.get('/trending/movie/week', {
+    params: { ...axios.defaults.params, page },
+  })
+  return response.data;
 }
 
 export async function getMovies(query) {
