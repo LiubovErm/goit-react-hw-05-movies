@@ -5,8 +5,6 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 axios.defaults.params = {
   api_key: KEY,
-  page: 1,
-  per_page: 20,
 };
 
 export async function getPopularMovies() {

@@ -75,3 +75,17 @@ export const DetailsLink = styled(NavLink)`
     color: ${props => props.theme.colors.blue};
   }
 `;
+
+export const  AddBtn = styled.button`
+  width: 180px;
+  font-size:  ${props => props.theme.fontSizes.s};
+  border-radius: ${props => props.theme.radii.normal};
+  padding:${props => props.theme.space[4]}px;
+  color:${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.green};
+  border: none;
+  cursor: pointer;
+  &.active {
+    background-color: ${props => props.theme.colors.blue};
+  }
+`;
