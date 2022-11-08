@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Form, Input, Button } from './SearchForm.styled';
 import PropTypes from 'prop-types';
 
-export const SearchForm = ({ onSubmit }) => {
-  const [searchMovie, setSearchMovie] = useState();
+export const SearchForm = ({ onSubmit, value  }) => {
+  const [searchMovie, setSearchMovie] = useState(value);
 
   const onFormSubmit = event => {
     event.preventDefault();

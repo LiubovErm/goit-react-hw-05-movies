@@ -14,9 +14,11 @@ export async function getPopularMovies(page) {
   return response.data;
 }
 
-export async function getMovies(query) {
-  const { data } = await axios.get(`/search/movie?&query=${query}`);
-  return data.results;
+export async function getMovies(query,page) {
+  const response = await axios.get(`/search/movie?&query=${query}`,{
+    params: { ...axios.defaults.params, query: query, page},
+  });
+  return response.data;
 }
 
 export async function getMovieDetails(movieId) {

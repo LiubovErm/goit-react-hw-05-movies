@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 
 export const MovieItem = ({ movie: { id, poster_path, original_title, vote_average, release_date} }) => {
   const location = useLocation();
-
+  const releaseDate = release_date ? release_date.slice(0, 4) : 'дати немає';
+  
   return (
     <Item>
       <MovieLink to={`/movies/${id}`} state={location}>
         <Image src={poster_path ? `https://image.tmdb.org/t/p/w342${poster_path}`: noImage} alt={original_title}/>
-        <Title>{`${original_title} (${release_date.substring(0, 4)})`}</Title>
+        <Title>{`${original_title} (${releaseDate})`}</Title>
         <Rating rating={vote_average.toFixed(2)}> {vote_average.toFixed(2)}</Rating>
       </MovieLink>
     </Item>
