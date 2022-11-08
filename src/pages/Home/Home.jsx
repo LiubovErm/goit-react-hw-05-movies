@@ -5,6 +5,7 @@ import { Box } from "../../components/Box/Box";
 import { Title, ErrorMessage } from './Home.styled';
 import { MoviesList } from '../../components/MoviesList/MoviesList'
 import PaginatedItems from '../../components/Pagination/Pagination';
+import { Loader } from '../../components/Loader/Loader';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState(null);
@@ -13,6 +14,7 @@ const Home = () => {
   const pageParams = Number(searchParams.get('page') ?? 1);
 
   useEffect(() => {
+    setStatus('pending');
     getPopularMovies(pageParams)
       .then(result => {
         setPopularMovies(result);
@@ -24,6 +26,7 @@ const Home = () => {
   return (
     <Box>
         <Title>Popular Movies</Title>
+        {status === 'pending' && <Loader />}
         {status === 'rejected' && (<ErrorMessage>Щось пішло не так</ErrorMessage>)}
         {status === 'resolved' && <MoviesList moviesData={popularMovies.results} />}
         {status === 'resolved' && (<PaginatedItems setPage={setSearchParams} totalPages={popularMovies.total_pages} currentPage={pageParams - 1}/>)}
