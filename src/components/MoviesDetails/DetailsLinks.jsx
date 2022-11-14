@@ -3,6 +3,7 @@ import { DetailsLinksList, DetailsLinksItem, DetailsLink } from './MoviesDetails
 const additionalLinks = [
   { text: 'Cast', path: 'cast' },
   { text: 'Reviews', path: 'reviews' },
+  { text: 'Trailers', path: 'trailers' },
 ];
 
 export const DetailsLinks = () => {

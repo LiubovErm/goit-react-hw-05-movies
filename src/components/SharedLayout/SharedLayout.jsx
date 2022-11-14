@@ -4,6 +4,7 @@ import { Box } from '../Box/Box';
 import { Header, Logo, Navigation, NavigationLink } from './SharedLayout.styled';
 import { Loader } from '../Loader/Loader'
 import logo from '../../images/logo.PNG'
+import ScrollToTop from "react-scroll-to-top";
 
 
 export const SharedLayout = () => {
@@ -23,6 +24,7 @@ export const SharedLayout = () => {
     <Suspense fallback={<Loader />}>
       <Outlet />
     </Suspense>
+    <ScrollToTop color="blue"/>
     </Box>
   );
 };
